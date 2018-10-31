@@ -1,0 +1,12 @@
+= javascript_pack_tag 'book/foom'
+
+.content
+  .row
+    .col.s12
+      .card
+        .card-content
+          .card-title
+            | プロフィールを登録しましょう
+          = form_tag(books_path) do
+            #fooms
+              foom title=@book.title author=@book.author
