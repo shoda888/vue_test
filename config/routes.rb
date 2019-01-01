@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to: 'page#home'
-
+  post '/callback' => 'linebot#callback'
   resources :books
 
   namespace :api do
