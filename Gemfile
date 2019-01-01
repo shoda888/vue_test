@@ -31,6 +31,7 @@ gem 'slim-rails'
 gem 'foreman'
 gem 'faker'
 gem 'active_model_serializers'
+gem 'line-bot-api'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
