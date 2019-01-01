@@ -13,8 +13,8 @@ class LinebotController < ApplicationController
 
   def callback
     body = request.body.read
-
     signature = request.env['HTTP_X_LINE_SIGNATURE']
+
     unless client.validate_signature(body, signature)
       error 400 do 'Bad Request' end
     end
@@ -34,6 +34,23 @@ class LinebotController < ApplicationController
         end
       end
     }
+
+    head :ok
+  end
+
+  def call
+    body = request.body.read
+    signature = request.env['HTTP_X_LINE_SIGNATURE']
+
+    unless client.validate_signature(body, signature)
+      error 400 do 'Bad Request' end
+    end
+
+    message = {
+      type: 'text',
+      text: '散歩開始'
+    }
+    client.push_message('C7cdceb50938ad9a23110491e911f3b51', message)
 
     head :ok
   end
