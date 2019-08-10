@@ -47,68 +47,57 @@ class LinebotController < ApplicationController
     pp params
     pp '@@@@@@@@@@@@@@@@@@@@@@@@@'
 
-    # message = {
-    #   type: "sticker",
-    #   packageId: "1",
-    #   stickerId: "1"
-    # }
-    # client.push_message('C5b56a06f5b1bd3c971785bf6e3f970cd', message)
+    message = {
+      'type': "sticker",
+      'packageId': "1",
+      'stickerId': "1"
+    }
+    client.push_message('C5b56a06f5b1bd3c971785bf6e3f970cd', message)
 
-
+  
     card = {
-      "type": "flex",
-      "altText": "hogehoge",
-      "contents": {
-          "type": "bubble",
-          "styles": {
-              "header": {
-                  "backgroundColor": "#ff62ae"
+      "type": "template",
+      "altText": "this is a confirm template",
+      "template": {
+          "type": "confirm",
+          "text": "Are you sure?",
+          "actions": [
+              {
+                "type": "message",
+                "label": "Yes",
+                "text": "yes"
               },
-              "body": {
-                  "backgroundColor": "#5bff54"
-              },
-              "footer": {
-                  "backgroundColor": "#7b78ff"
+              {
+                "type": "message",
+                "label": "No",
+                "text": "no"
               }
-          },
-          "header": {
-              "type": "box",
-              "layout": "vertical",
-              "contents": [
-                  {
-                      "type": "text",
-                      "text": "header"
-                  }
-              ]
-          },
-          "hero": {
-              "type": "image",
-              "url": "<imageUrl>",
-              "size": "full",
-              "aspectRatio": "1:1"
-          },
-          "body": {
-              "type": "box",
-              "layout": "vertical",
-              "contents": [
-                  {
-                      "type": "text",
-                      "text": "body"
-                  }
-              ]
-          },
-          "footer": {
-              "type": "box",
-              "layout": "vertical",
-              "contents": [
-                  {
-                      "type": "text",
-                      "text": "footer"
-                  }
-              ]
-          }
+          ]
       }
     }
+    card2 = {  
+      "type": "flex",
+      "altText": "this is a flex message",
+      "contents": {
+        "type": "bubble",
+        "body": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "text",
+              "text": "hello"
+            },
+            {
+              "type": "text",
+              "text": "world"
+            }
+          ]
+        }
+      }
+    }
+    client.push_message('C5b56a06f5b1bd3c971785bf6e3f970cd', card)
+    client.push_message('C5b56a06f5b1bd3c971785bf6e3f970cd', card2)
     # card = {
     #   type: "bubble",
     #   styles: {
@@ -242,7 +231,7 @@ class LinebotController < ApplicationController
     #     ]
     #   }
     # }
-    client.push_message('C5b56a06f5b1bd3c971785bf6e3f970cd', card)
+    
     head :ok
   end
 end
