@@ -30,7 +30,38 @@ class LinebotController < ApplicationController
             type: 'text',
             text: event.message['text']
           }
-          client.push_message(event['source']['groupId'], message)
+          carousel = {
+            "type": "carousel",
+            "contents": [
+              {
+                "type": "bubble",
+                "body": {
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "First bubble"
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "bubble",
+                "body": {
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "Second bubble"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+          client.push_message(event['source']['groupId'], carousel)
         end
       end
     end
@@ -47,57 +78,40 @@ class LinebotController < ApplicationController
     pp params
     pp '@@@@@@@@@@@@@@@@@@@@@@@@@'
 
-    message = {
-      'type': "sticker",
-      'packageId': "1",
-      'stickerId': "1"
-    }
-    client.push_message('C5b56a06f5b1bd3c971785bf6e3f970cd', message)
 
-  
-    card = {
-      "type": "template",
-      "altText": "this is a confirm template",
-      "template": {
-          "type": "confirm",
-          "text": "Are you sure?",
-          "actions": [
+    carousel = {
+      "type": "carousel",
+      "contents": [
+        {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
               {
-                "type": "message",
-                "label": "Yes",
-                "text": "yes"
-              },
-              {
-                "type": "message",
-                "label": "No",
-                "text": "no"
+                "type": "text",
+                "text": "First bubble"
               }
-          ]
-      }
-    }
-    card2 = {  
-      "type": "flex",
-      "altText": "this is a flex message",
-      "contents": {
-        "type": "bubble",
-        "body": {
-          "type": "box",
-          "layout": "vertical",
-          "contents": [
-            {
-              "type": "text",
-              "text": "hello"
-            },
-            {
-              "type": "text",
-              "text": "world"
-            }
-          ]
+            ]
+          }
+        },
+        {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": "Second bubble"
+              }
+            ]
+          }
         }
-      }
+      ]
     }
-    client.push_message('C5b56a06f5b1bd3c971785bf6e3f970cd', card)
-    client.push_message('C5b56a06f5b1bd3c971785bf6e3f970cd', card2)
+    
+    client.push_message('C5b56a06f5b1bd3c971785bf6e3f970cd', carousel)
     # card = {
     #   type: "bubble",
     #   styles: {
