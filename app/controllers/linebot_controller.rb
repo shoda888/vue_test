@@ -31,35 +31,20 @@ class LinebotController < ApplicationController
             text: event.message['text']
           }
           carousel = {
-            "type": "carousel",
-            "contents": [
-              {
-                "type": "bubble",
-                "body": {
-                  "type": "box",
-                  "layout": "vertical",
-                  "contents": [
-                    {
-                      "type": "text",
-                      "text": "First bubble"
-                    }
-                  ]
+            "type": "bubble",
+            "body": {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "今日の東京の天気",
+                  "weight": "bold",
+                  "gravity": "center",
+                  "size": "xl"
                 }
-              },
-              {
-                "type": "bubble",
-                "body": {
-                  "type": "box",
-                  "layout": "vertical",
-                  "contents": [
-                    {
-                      "type": "text",
-                      "text": "Second bubble"
-                    }
-                  ]
-                }
-              }
-            ]
+              ]
+            }
           }
           client.push_message(event['source']['groupId'], message)
         end
@@ -78,40 +63,50 @@ class LinebotController < ApplicationController
     pp params
     pp '@@@@@@@@@@@@@@@@@@@@@@@@@'
 
+    message = {
+      type: 'text',
+      text: "現在の気温#{params['temp']}℃"
+    }
 
-    carousel = {
-      "type": "carousel",
-      "contents": [
-        {
-          "type": "bubble",
-          "body": {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-              {
-                "type": "text",
-                "text": "First bubble"
-              }
-            ]
+    card = {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "今日の東京の天気",
+            "weight": "bold",
+            "gravity": "center",
+            "size": "xl"
+          },
+          {
+            "type": "text",
+            "text": "#{params['desc']}"
+          },
+          {
+            "type": "text",
+            "text": "#{params['temp']}"
+          },
+          {
+            "type": "text",
+            "text": "#{params['max']}"
+          },
+          {
+            "type": "text",
+            "text": "#{params['min']}"
+          },
+          {
+            "type": "text",
+            "text": "#{params['humidity']}"
           }
-        },
-        {
-          "type": "bubble",
-          "body": {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-              {
-                "type": "text",
-                "text": "Second bubble"
-              }
-            ]
-          }
-        }
-      ]
+        ]
+      }
     }
     
-    client.push_message('C5b56a06f5b1bd3c971785bf6e3f970cd', carousel)
+    client.push_message('C5b56a06f5b1bd3c971785bf6e3f970cd', message)
+    client.push_message('C5b56a06f5b1bd3c971785bf6e3f970cd', card)
     
     head :ok
   end
