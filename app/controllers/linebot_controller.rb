@@ -47,12 +47,12 @@ class LinebotController < ApplicationController
     pp params
     pp '@@@@@@@@@@@@@@@@@@@@@@@@@'
 
-    message = {
-      type: "sticker",
-      packageId: "1",
-      stickerId: "1"
-    }
-    client.push_message('C5b56a06f5b1bd3c971785bf6e3f970cd', message)
+    # message = {
+    #   type: "sticker",
+    #   packageId: "1",
+    #   stickerId: "1"
+    # }
+    # client.push_message('C5b56a06f5b1bd3c971785bf6e3f970cd', message)
 
 
     card = {
