@@ -54,139 +54,194 @@ class LinebotController < ApplicationController
     }
     client.push_message('C5b56a06f5b1bd3c971785bf6e3f970cd', message)
 
+
     card = {
-      type: "bubble",
-      styles: {
-        footer: {
-          separator: true
-        }
-      },
-      body: {
-        type: "box",
-        layout: "vertical",
-        contents: [
-          {
-            type: "text",
-            text: "今日の東京の天気",
-            weight: "bold",
-            color: "#1DB446",
-            size: "md"
-          },
-          {
-            type: "separator",
-            margin: "xxl"
-          },
-          {
-            type: "box",
-            layout: "vertical",
-            margin: "xxl",
-            spacing: "sm",
-            contents: [
-              {
-                type: "box",
-                layout: "horizontal",
-                contents: [
-                  {
-                    type: "text",
-                    text: "Description",
-                    size: "sm",
-                    color: "#555555",
-                    flex: 0
-                  },
-                  {
-                    type: "text",
-                    text: "$2.99",
-                    size: "sm",
-                    color: "#111111",
-                    align: "end"
-                  }
-                ]
+      "type": "flex",
+      "altText": "hogehoge",
+      "contents": {
+          "type": "bubble",
+          "styles": {
+              "header": {
+                  "backgroundColor": "#ff62ae"
               },
-              {
-                type: "box",
-                layout: "horizontal",
-                contents: [
-                  {
-                    type: "text",
-                    text: "Temp",
-                    size: "sm",
-                    color: "#555555",
-                    flex: 0
-                  },
-                  {
-                    type: "text",
-                    text: "$0.99",
-                    size: "sm",
-                    color: "#111111",
-                    align: "end"
-                  }
-                ]
+              "body": {
+                  "backgroundColor": "#5bff54"
               },
-              {
-                type: "box",
-                layout: "horizontal",
-                contents: [
-                  {
-                    type: "text",
-                    text: "MaxTemp",
-                    size: "sm",
-                    color: "#555555",
-                    flex: 0
-                  },
-                  {
-                    type: "text",
-                    text: "$3.33",
-                    size: "sm",
-                    color: "#111111",
-                    align: "end"
-                  }
-                ]
-              },
-              {
-                type: "box",
-                layout: "horizontal",
-                contents: [
-                  {
-                    type: "text",
-                    text: "MinTemp",
-                    size: "sm",
-                    color: "#555555",
-                    flex: 0
-                  },
-                  {
-                    type: "text",
-                    text: "$3.33",
-                    size: "sm",
-                    color: "#111111",
-                    align: "end"
-                  }
-                ]
-              },
-              {
-                type: "box",
-                "layout": "horizontal",
-                "contents": [
-                  {
-                    type: "text",
-                    text: "Humidity",
-                    size: "sm",
-                    color: "#555555",
-                    flex: 0
-                  },
-                  {
-                    type: "text",
-                    text: "$3.33",
-                    size: "sm",
-                    color: "#111111",
-                    align: "end"
-                  }
-                ]
+              "footer": {
+                  "backgroundColor": "#7b78ff"
               }
-            ]
+          },
+          "header": {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                  {
+                      "type": "text",
+                      "text": "header"
+                  }
+              ]
+          },
+          "hero": {
+              "type": "image",
+              "url": "<imageUrl>",
+              "size": "full",
+              "aspectRatio": "1:1"
+          },
+          "body": {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                  {
+                      "type": "text",
+                      "text": "body"
+                  }
+              ]
+          },
+          "footer": {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                  {
+                      "type": "text",
+                      "text": "footer"
+                  }
+              ]
           }
-        ]
       }
     }
+    # card = {
+    #   type: "bubble",
+    #   styles: {
+    #     footer: {
+    #       separator: true
+    #     }
+    #   },
+    #   body: {
+    #     type: "box",
+    #     layout: "vertical",
+    #     contents: [
+    #       {
+    #         type: "text",
+    #         text: "今日の東京の天気",
+    #         weight: "bold",
+    #         color: "#1DB446",
+    #         size: "md"
+    #       },
+    #       {
+    #         type: "separator",
+    #         margin: "xxl"
+    #       },
+    #       {
+    #         type: "box",
+    #         layout: "vertical",
+    #         margin: "xxl",
+    #         spacing: "sm",
+    #         contents: [
+    #           {
+    #             type: "box",
+    #             layout: "horizontal",
+    #             contents: [
+    #               {
+    #                 type: "text",
+    #                 text: "Description",
+    #                 size: "sm",
+    #                 color: "#555555",
+    #                 flex: 0
+    #               },
+    #               {
+    #                 type: "text",
+    #                 text: "$2.99",
+    #                 size: "sm",
+    #                 color: "#111111",
+    #                 align: "end"
+    #               }
+    #             ]
+    #           },
+    #           {
+    #             type: "box",
+    #             layout: "horizontal",
+    #             contents: [
+    #               {
+    #                 type: "text",
+    #                 text: "Temp",
+    #                 size: "sm",
+    #                 color: "#555555",
+    #                 flex: 0
+    #               },
+    #               {
+    #                 type: "text",
+    #                 text: "$0.99",
+    #                 size: "sm",
+    #                 color: "#111111",
+    #                 align: "end"
+    #               }
+    #             ]
+    #           },
+    #           {
+    #             type: "box",
+    #             layout: "horizontal",
+    #             contents: [
+    #               {
+    #                 type: "text",
+    #                 text: "MaxTemp",
+    #                 size: "sm",
+    #                 color: "#555555",
+    #                 flex: 0
+    #               },
+    #               {
+    #                 type: "text",
+    #                 text: "$3.33",
+    #                 size: "sm",
+    #                 color: "#111111",
+    #                 align: "end"
+    #               }
+    #             ]
+    #           },
+    #           {
+    #             type: "box",
+    #             layout: "horizontal",
+    #             contents: [
+    #               {
+    #                 type: "text",
+    #                 text: "MinTemp",
+    #                 size: "sm",
+    #                 color: "#555555",
+    #                 flex: 0
+    #               },
+    #               {
+    #                 type: "text",
+    #                 text: "$3.33",
+    #                 size: "sm",
+    #                 color: "#111111",
+    #                 align: "end"
+    #               }
+    #             ]
+    #           },
+    #           {
+    #             type: "box",
+    #             "layout": "horizontal",
+    #             "contents": [
+    #               {
+    #                 type: "text",
+    #                 text: "Humidity",
+    #                 size: "sm",
+    #                 color: "#555555",
+    #                 flex: 0
+    #               },
+    #               {
+    #                 type: "text",
+    #                 text: "$3.33",
+    #                 size: "sm",
+    #                 color: "#111111",
+    #                 align: "end"
+    #               }
+    #             ]
+    #           }
+    #         ]
+    #       }
+    #     ]
+    #   }
+    # }
     client.push_message('C5b56a06f5b1bd3c971785bf6e3f970cd', card)
     head :ok
   end
