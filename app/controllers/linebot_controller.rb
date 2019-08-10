@@ -104,9 +104,49 @@ class LinebotController < ApplicationController
         ]
       }
     }
+    card2 = {  
+      "type": "flex",
+      "altText": "this is a flex message",
+      "contents": {
+        "type": "bubble",
+        "body": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "text",
+              "text": "今日の東京の天気",
+              "weight": "bold",
+              "gravity": "center",
+              "size": "xl"
+            },
+            {
+              "type": "text",
+              "text": "#{params['desc']}"
+            },
+            {
+              "type": "text",
+              "text": "#{params['temp']}"
+            },
+            {
+              "type": "text",
+              "text": "#{params['max']}"
+            },
+            {
+              "type": "text",
+              "text": "#{params['min']}"
+            },
+            {
+              "type": "text",
+              "text": "#{params['humidity']}"
+            }
+          ]
+        }
+      }
+    }
     
     client.push_message('C5b56a06f5b1bd3c971785bf6e3f970cd', message)
-    client.push_message('C5b56a06f5b1bd3c971785bf6e3f970cd', card)
+    client.push_message('C5b56a06f5b1bd3c971785bf6e3f970cd', card2)
     
     head :ok
   end
