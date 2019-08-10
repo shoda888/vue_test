@@ -26,17 +26,11 @@ class LinebotController < ApplicationController
       when Line::Bot::Event::Message
         case event.type
         when Line::Bot::Event::MessageType::Text
-          # message = {
-          #   type: 'text',
-          #   text: event.message['text']
-          # }
-          # client.reply_message(event['replyToken'], message)
           message = {
             type: 'text',
-            text: '散歩開始'
+            text: event.message['text']
           }
-          pp event['source']['groupId']
-          client.push_message('C5b56a06f5b1bd3c971785bf6e3f970cd', message)
+          client.push_message(event['source']['groupId'], message)
         end
       end
     end
