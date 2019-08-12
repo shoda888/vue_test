@@ -53,7 +53,7 @@ class LinebotController < ApplicationController
       params["time#{n}"] = (Time.parse(params["time#{n}"]) + 9.hours).to_s(:db)
     end
     puts params['token']
-    client.replyMessage(params['token'], carousel(params['area'], params['time0'], params['temp0'], params['humidity0'], params['description0'], params['time1'], params['temp1'], params['humidity1'], params['description1'], params['time2'], params['temp2'], params['humidity2'], params['description2']))
+    client.reply_message(params['token'], carousel(params['area'], params['time0'], params['temp0'], params['humidity0'], params['description0'], params['time1'], params['temp1'], params['humidity1'], params['description1'], params['time2'], params['temp2'], params['humidity2'], params['description2']))
     # client.push_message('C5b56a06f5b1bd3c971785bf6e3f970cd', carousel(params['area'], params['time0'], params['temp0'], params['humidity0'], params['description0'], params['time1'], params['temp1'], params['humidity1'], params['description1'], params['time2'], params['temp2'], params['humidity2'], params['description2']))
     head :ok
   end
