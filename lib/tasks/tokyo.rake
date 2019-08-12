@@ -1,12 +1,5 @@
 
-task :push_notification => :environment do
-    # puts 'fjkdsbhfjkadfjdsbfnl'
-    # darksky = Darksky::API.new('3066e8c39d06e8576311133ba83ac1f2')
-
-    # # Returns a forecast for the next hour at a given location.
-    # forecast = darksky.forecast('35.6812','139.767125')
-    # puts forecast 
-    # Weather.delete_all
+task :tokyo_weather => :environment do
     require 'net/http'
     require 'uri'
     require 'json'
@@ -78,6 +71,7 @@ task :push_notification => :environment do
         params2 = URI.encode_www_form(
             { 
                 area: body['city']['name'],
+                token: ENV['token'],
                 time0: body['list'][0]['dt_txt'],
                 temp0: body['list'][0]['main']['temp'],
                 humidity0: body['list'][0]['main']['humidity'],

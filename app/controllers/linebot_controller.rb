@@ -31,9 +31,15 @@ class LinebotController < ApplicationController
         when Line::Bot::Event::MessageType::Text
           
           if event.message['text'] == '東京の天気'
+            ENV['token'] = event['replyToken']
             Rails.application.load_tasks
-            Rake::Task['push_notification'].execute
-            Rake::Task['push_notification'].clear
+            Rake::Task['tokyo_weather'].execute
+            Rake::Task['tokyo_weather'].clear
+          elsif event.message['text'] == '上海の天気'
+            ENV['token'] = event['replyToken']
+            Rails.application.load_tasks
+            Rake::Task['shanghai_weather'].execute
+            Rake::Task['shanghai_weather'].clear
           end
         end
       end
@@ -42,26 +48,13 @@ class LinebotController < ApplicationController
     head :ok
   end
 
-  def call
-    # pp '@@@@@@@@@@@@@@@@@@@@@@@@@'
-    # # body = request.body.read
-    # # pp params['temp']
-    # # values = body.split(',')
-    # # keys = ['temp', 'desc', 'min', 'max', 'humidity', 'area']
-    # # params = Hash[*[keys, values].transpose.flatten]
-    # # pp params
-    # pp '@@@@@@@@@@@@@@@@@@@@@@@@@'
-    # @weather = Weather.new(area: params['area'], temp: params['temp'], description: params['desc'], max_temp: params['max'], min_temp: params['min'], humidity: params['humidity'])
-    # @weather.save
-    # head :ok
-    head :ok
-  end
-
   def push
     3.times.each do |n|
       params["time#{n}"] = (Time.parse(params["time#{n}"]) + 9.hours).to_s(:db)
     end
-    client.push_message('C5b56a06f5b1bd3c971785bf6e3f970cd', carousel(params['area'], params['time0'], params['temp0'], params['humidity0'], params['description0'], params['time1'], params['temp1'], params['humidity1'], params['description1'], params['time2'], params['temp2'], params['humidity2'], params['description2']))
+    puts params['token']
+    client.replyMessage(params['token'], carousel(params['area'], params['time0'], params['temp0'], params['humidity0'], params['description0'], params['time1'], params['temp1'], params['humidity1'], params['description1'], params['time2'], params['temp2'], params['humidity2'], params['description2']))
+    # client.push_message('C5b56a06f5b1bd3c971785bf6e3f970cd', carousel(params['area'], params['time0'], params['temp0'], params['humidity0'], params['description0'], params['time1'], params['temp1'], params['humidity1'], params['description1'], params['time2'], params['temp2'], params['humidity2'], params['description2']))
     head :ok
   end
 
