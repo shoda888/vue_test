@@ -21,3 +21,13 @@ E, [2019-08-12T17:21:26.280609 #52073] ERROR -- : undefined method `main' for #<
 Did you mean?  min
 E, [2019-08-12T18:00:14.220858 #52369] ERROR -- : no implicit conversion of String into Integer
 E, [2019-08-12T18:01:07.193884 #52398] ERROR -- : no implicit conversion of String into Integer
+E, [2019-08-12T18:57:16.330244 #50518] ERROR -- : end of file reached
+E, [2019-08-12T18:58:14.691221 #50518] ERROR -- : end of file reached
+E, [2019-08-12T19:03:51.894448 #53248] ERROR -- : end of file reached
+E, [2019-08-12T19:03:58.714159 #53248] ERROR -- : end of file reached
+E, [2019-08-12T19:04:01.210450 #53248] ERROR -- : end of file reached
+E, [2019-08-12T19:05:23.856438 #53248] ERROR -- : end of file reached
+E, [2019-08-12T19:07:14.712184 #53248] ERROR -- : end of file reached
+E, [2019-08-12T19:09:32.219049 #53248] ERROR -- : end of file reached
+E, [2019-08-12T19:10:55.898255 #53248] ERROR -- : end of file reached
+E, [2019-08-12T19:11:49.464426 #53248] ERROR -- : end of file reached

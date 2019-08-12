@@ -1,5 +1,6 @@
 class LinebotController < ApplicationController
   require 'line/bot'  # gem 'line-bot-api'
+  require 'rake'
 
   # callbackアクションのCSRFトークン認証を無効
   protect_from_forgery :except => [:callback]
@@ -12,6 +13,8 @@ class LinebotController < ApplicationController
       config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
     }
   end
+
+
 
   def callback
     body = request.body.read
@@ -28,27 +31,12 @@ class LinebotController < ApplicationController
       when Line::Bot::Event::Message
         case event.type
         when Line::Bot::Event::MessageType::Text
-          message = {
-            type: 'text',
-            text: event.message['text']
-          }
-          carousel = {
-            "type": "bubble",
-            "body": {
-              "type": "box",
-              "layout": "vertical",
-              "contents": [
-                {
-                  "type": "text",
-                  "text": "今日の東京の天気",
-                  "weight": "bold",
-                  "gravity": "center",
-                  "size": "xl"
-                }
-              ]
-            }
-          }
-          client.push_message(event['source']['groupId'], message)
+          
+          if event.message['text'] == '東京の天気'
+            Rails.application.load_tasks
+            Rake::Task['push_notification'].execute
+            Rake::Task['push_notification'].clear
+          end
         end
       end
     end

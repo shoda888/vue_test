@@ -94,6 +94,7 @@ task :push_notification => :environment do
             })
 
         uri2 = URI.parse("https://kina-bot.herokuapp.com/push?#{params2}")
+        # uri2 = URI.parse("https://00a42747.ngrok.io/push?#{params2}")
 
         response = Net::HTTP.start(uri2.host, uri2.port) do |http|
             # Net::HTTP.open_timeout=で接続時に待つ最大秒数の設定をする
