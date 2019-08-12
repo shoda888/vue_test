@@ -1,0 +1,23 @@
+# Logfile created on 2019-08-12 14:28:45 +0900 by logger.rb/56815
+E, [2019-08-12T14:28:45.590066 #49458] ERROR -- : HTTP ERROR: code=400 message=Bad Request
+E, [2019-08-12T14:29:06.669494 #49490] ERROR -- : HTTP ERROR: code=400 message=Bad Request
+E, [2019-08-12T14:38:06.413322 #49762] ERROR -- : HTTP ERROR: code=400 message=Bad Request
+E, [2019-08-12T14:39:21.479613 #49816] ERROR -- : HTTP ERROR: code=400 message=Bad Request
+E, [2019-08-12T14:41:20.242582 #49875] ERROR -- : HTTP ERROR: code=400 message=Bad Request
+E, [2019-08-12T14:44:32.322927 #49950] ERROR -- : HTTP ERROR: code=400 message=Bad Request
+E, [2019-08-12T15:39:36.953657 #50947] ERROR -- : HTTP ERROR: code=400 message=Bad Request
+E, [2019-08-12T15:40:14.057315 #50993] ERROR -- : uninitialized constant Net::HTTPS
+E, [2019-08-12T16:32:12.621879 #51426] ERROR -- : uninitialized constant Net::HTTPS
+E, [2019-08-12T17:14:56.482514 #51764] ERROR -- : undefined method `city' for #<Hash:0x00007ff07b1e7508>
+E, [2019-08-12T17:15:47.592020 #51802] ERROR -- : undefined method `city' for #<Hash:0x00007f956cf80558>
+E, [2019-08-12T17:17:27.850781 #51846] ERROR -- : undefined method `city' for #<Hash:0x00007fa0c2f59460>
+E, [2019-08-12T17:18:20.672134 #51882] ERROR -- : undefined method `city' for #<Hash:0x00007fa9ad869288>
+E, [2019-08-12T17:18:33.520045 #51925] ERROR -- : undefined method `city' for #<Hash:0x00007f9f7d9f2760>
+E, [2019-08-12T17:19:58.460272 #51964] ERROR -- : undefined method `city' for #<Hash:0x00007ff9a4cc4408>
+E, [2019-08-12T17:20:16.294800 #52000] ERROR -- : undefined method `city' for #<Hash:0x00007ff25b8e25d8>
+E, [2019-08-12T17:20:58.570648 #52029] ERROR -- : undefined method `main' for #<Hash:0x00007f924f30e538>
+Did you mean?  min
+E, [2019-08-12T17:21:26.280609 #52073] ERROR -- : undefined method `main' for #<Hash:0x00007f8a81cec4b8>
+Did you mean?  min
+E, [2019-08-12T18:00:14.220858 #52369] ERROR -- : no implicit conversion of String into Integer
+E, [2019-08-12T18:01:07.193884 #52398] ERROR -- : no implicit conversion of String into Integer

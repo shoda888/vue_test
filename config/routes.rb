@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root to: 'page#home'
   post '/callback' => 'linebot#callback'
-  post '/call' => 'linebot#call'
+  get '/call' => 'linebot#call'
+  get '/push' => 'linebot#push'
   resources :books
 
   namespace :api do

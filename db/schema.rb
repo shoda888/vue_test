@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181023072218) do
+ActiveRecord::Schema.define(version: 20190811132824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,17 @@ ActiveRecord::Schema.define(version: 20181023072218) do
     t.string "author"
     t.string "publisher"
     t.string "genre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "weathers", force: :cascade do |t|
+    t.string "area"
+    t.string "temp"
+    t.string "description"
+    t.string "max_temp"
+    t.string "min_temp"
+    t.string "humidity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
