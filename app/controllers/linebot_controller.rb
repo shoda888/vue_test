@@ -50,12 +50,12 @@ class LinebotController < ApplicationController
 
   def push
     if params[:area] == 'Tokyo'
-      params[:area] == '東京'
+      params[:area] = '東京'
       3.times.each do |n|
         params["time#{n}"] = (Time.parse(params["time#{n}"]) + 9.hours).to_s(:db)
       end
     elsif params[:area] == 'Shanghai'
-      params[:area] == '上海'
+      params[:area] = '上海'
       3.times.each do |n|
         params["time#{n}"] = (Time.parse(params["time#{n}"]) + 8.hours).to_s(:db)
       end
