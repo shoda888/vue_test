@@ -31,3 +31,22 @@ E, [2019-08-12T19:07:14.712184 #53248] ERROR -- : end of file reached
 E, [2019-08-12T19:09:32.219049 #53248] ERROR -- : end of file reached
 E, [2019-08-12T19:10:55.898255 #53248] ERROR -- : end of file reached
 E, [2019-08-12T19:11:49.464426 #53248] ERROR -- : end of file reached
+E, [2019-08-12T20:25:36.886038 #53641] ERROR -- : Connection reset by peer
+E, [2019-08-12T20:28:34.331001 #53684] ERROR -- : redirect
+E, [2019-08-12T20:28:34.984769 #53684] ERROR -- : Connection reset by peer
+E, [2019-08-12T20:29:32.624576 #53727] ERROR -- : redirect
+E, [2019-08-12T20:29:33.318032 #53727] ERROR -- : end of file reached
+E, [2019-08-12T20:30:29.546715 #53760] ERROR -- : redirect
+E, [2019-08-12T20:30:30.183000 #53760] ERROR -- : end of file reached
+W, [2019-08-12T20:31:14.571050 #53800]  WARN -- : redirect
+E, [2019-08-12T20:31:15.101431 #53800] ERROR -- : end of file reached
+W, [2019-08-12T20:32:41.457995 #53839]  WARN -- : redirect
+E, [2019-08-12T20:32:41.998303 #53839] ERROR -- : end of file reached
+W, [2019-08-12T20:34:10.103660 #53875]  WARN -- : redirect
+E, [2019-08-12T20:34:10.626165 #53875] ERROR -- : end of file reached
+W, [2019-08-12T20:34:30.958890 #53904]  WARN -- : redirect
+E, [2019-08-12T20:34:31.463344 #53904] ERROR -- : end of file reached
+W, [2019-08-12T20:36:51.746525 #53951]  WARN -- : redirect
+E, [2019-08-12T20:36:52.260692 #53951] ERROR -- : end of file reached
+W, [2019-08-12T20:37:06.841830 #53987]  WARN -- : redirect
+W, [2019-08-12T20:53:40.002127 #54064]  WARN -- : redirect

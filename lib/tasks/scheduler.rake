@@ -74,7 +74,7 @@ task :push_notification => :environment do
         # JSONオブジェクトをHashへパースする
         # JSON::ParserErrorが発生する可能性がある
         body = JSON.parse(response.body)
-
+        puts body
         params2 = URI.encode_www_form(
             { 
                 area: body['city']['name'],
@@ -93,14 +93,14 @@ task :push_notification => :environment do
                 
             })
 
-        uri2 = URI.parse("https://kina-bot.herokuapp.com/push?#{params2}")
-        # uri2 = URI.parse("https://00a42747.ngrok.io/push?#{params2}")
+        uri2 = URI.parse("http://kina-bot.herokuapp.com/push?#{params2}")
+        # uri2 = URI.parse("http://00a42747.ngrok.io/push?#{params2}")
 
         response = Net::HTTP.start(uri2.host, uri2.port) do |http|
             # Net::HTTP.open_timeout=で接続時に待つ最大秒数の設定をする
             # タイムアウト時はTimeoutError例外が発生
             http.open_timeout = 5
-    
+            logger.warn('redirect')
             # Net::HTTP.read_timeout=で読み込み1回でブロックして良い最大秒数の設定をする
             # デフォルトは60秒
             # タイムアウト時はTimeoutError例外が発生
