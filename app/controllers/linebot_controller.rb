@@ -58,7 +58,7 @@ class LinebotController < ApplicationController
         params["time#{n}"] = (Time.parse(params["time#{n}"]) + 8.hours).to_s(:db)
       end
     end
-    client.reply_message(params['token'], carousel(params['area'], params['time0'], params['temp0'], params['humidity0'], params['icon0'], params['time1'], params['temp1'], params['humidity1'], params['icon1'], params['time2'], params['temp2'], params['humidity2'], params['icon2']))
+    client.reply_message(params['token'], carousel(params['area'], params['time0'], params['temp0'], params['humidity0'], params['icon0'], params['time1'], params['temp1'], params['humidity1'], params['icon1'], params['time2'], params['temp2'], params['humidity2'], params['icon2'], params['time3'], params['temp3'], params['humidity3'], params['icon3'], params['time4'], params['temp4'], params['humidity4'], params['icon4']))
     head :ok
   end
 
@@ -68,7 +68,7 @@ class LinebotController < ApplicationController
       params["time#{n}"] = (Time.parse(params["time#{n}"]) + 9.hours).to_s(:db)
     end
     # client.reply_message('C0f109e7936999f32d0f7fbc696b8ca55', carousel(params['area'], params['time0'], params['temp0'], params['humidity0'], params['icon0'], params['time1'], params['temp1'], params['humidity1'], params['icon1'], params['time2'], params['temp2'], params['humidity2'], params['icon2']))
-    client.push_message('C5b56a06f5b1bd3c971785bf6e3f970cd', carousel(params['area'], params['time0'], params['temp0'], params['humidity0'], params['icon0'], params['time1'], params['temp1'], params['humidity1'], params['icon1'], params['time2'], params['temp2'], params['humidity2'], params['icon2']))
+    client.push_message('C5b56a06f5b1bd3c971785bf6e3f970cd', carousel(params['area'], params['time0'], params['temp0'], params['humidity0'], params['icon0'], params['time1'], params['temp1'], params['humidity1'], params['icon1'], params['time2'], params['temp2'], params['humidity2'], params['icon2'], params['time3'], params['temp3'], params['humidity3'], params['icon3'], params['time4'], params['temp4'], params['humidity4'], params['icon4']))
     head :ok
   end
 
