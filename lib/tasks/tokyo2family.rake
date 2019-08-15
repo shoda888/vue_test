@@ -16,7 +16,7 @@ task :tokyo_familyweather => :environment do
     # （変換例）
     # 'bar baz' => 'bar+baz'
     # 'あ' => '%E3%81%82'
-    params = URI.encode_www_form({ appid: 'ec1fbefcc87ce0258cb250ff7777eb84', q: 'Tokyo' , units: 'metric', cnt: '3' })
+    params = URI.encode_www_form({ appid: 'ec1fbefcc87ce0258cb250ff7777eb84', q: 'Tokyo' , units: 'metric', cnt: '5' })
 
     # [URI]
     # URI.parseは与えられたURIからURI::Genericのサブクラスのインスタンスを返す
@@ -71,20 +71,28 @@ task :tokyo_familyweather => :environment do
         params2 = URI.encode_www_form(
             { 
                 area: body['city']['name'],
+                cnt: body['cnt'],
                 token: ENV['token'],
                 time0: body['list'][0]['dt_txt'],
                 temp0: body['list'][0]['main']['temp'],
                 humidity0: body['list'][0]['main']['humidity'],
-                description0: body['list'][0]['weather'][0]['description'],
+                icon0: body['list'][0]['weather'][0]['icon'],
                 time1: body['list'][1]['dt_txt'],
                 temp1: body['list'][1]['main']['temp'],
                 humidity1: body['list'][1]['main']['humidity'],
-                description1: body['list'][1]['weather'][0]['description'],
+                icon1: body['list'][1]['weather'][0]['icon'],
                 time2: body['list'][2]['dt_txt'],
                 temp2: body['list'][2]['main']['temp'],
                 humidity2: body['list'][2]['main']['humidity'],
-                description2: body['list'][2]['weather'][0]['description']
-                
+                icon2: body['list'][2]['weather'][0]['icon'],
+                time3: body['list'][3]['dt_txt'],
+                temp3: body['list'][3]['main']['temp'],
+                humidity3: body['list'][3]['main']['humidity'],
+                icon3: body['list'][4]['weather'][0]['icon'],
+                time4: body['list'][4]['dt_txt'],
+                temp4: body['list'][4]['main']['temp'],
+                humidity4: body['list'][4]['main']['humidity'],
+                icon4: body['list'][4]['weather'][0]['icon']
             })
 
         uri2 = URI.parse("http://kina-bot.herokuapp.com/push_family?#{params2}")

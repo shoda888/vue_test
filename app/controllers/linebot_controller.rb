@@ -49,46 +49,41 @@ class LinebotController < ApplicationController
   def push
     if params[:area] == 'Tokyo'
       params[:area] = '東京'
-      3.times.each do |n|
+      params[:cnt].times.each do |n|
         params["time#{n}"] = (Time.parse(params["time#{n}"]) + 9.hours).to_s(:db)
       end
     elsif params[:area] == 'Shanghai'
       params[:area] = '上海'
-      3.times.each do |n|
+      params[:cnt].times.each do |n|
         params["time#{n}"] = (Time.parse(params["time#{n}"]) + 8.hours).to_s(:db)
       end
     end
-    client.reply_message(params['token'], carousel(params['area'], params['time0'], params['temp0'], params['humidity0'], params['description0'], params['time1'], params['temp1'], params['humidity1'], params['description1'], params['time2'], params['temp2'], params['humidity2'], params['description2']))
+    client.reply_message(params['token'], carousel(params['area'], params['time0'], params['temp0'], params['humidity0'], params['icon0'], params['time1'], params['temp1'], params['humidity1'], params['icon1'], params['time2'], params['temp2'], params['humidity2'], params['icon2']))
     head :ok
   end
 
   def push_family
     params[:area] = '東京'
-    3.times.each do |n|
+    params[:cnt].times.each do |n|
       params["time#{n}"] = (Time.parse(params["time#{n}"]) + 9.hours).to_s(:db)
     end
-    # client.reply_message('C0f109e7936999f32d0f7fbc696b8ca55', carousel(params['area'], params['time0'], params['temp0'], params['humidity0'], params['description0'], params['time1'], params['temp1'], params['humidity1'], params['description1'], params['time2'], params['temp2'], params['humidity2'], params['description2']))
-    client.push_message('C5b56a06f5b1bd3c971785bf6e3f970cd', carousel(params['area'], params['time0'], params['temp0'], params['humidity0'], params['description0'], params['time1'], params['temp1'], params['humidity1'], params['description1'], params['time2'], params['temp2'], params['humidity2'], params['description2']))
+    # client.reply_message('C0f109e7936999f32d0f7fbc696b8ca55', carousel(params['area'], params['time0'], params['temp0'], params['humidity0'], params['icon0'], params['time1'], params['temp1'], params['humidity1'], params['icon1'], params['time2'], params['temp2'], params['humidity2'], params['icon2']))
+    client.push_message('C5b56a06f5b1bd3c971785bf6e3f970cd', carousel(params['area'], params['time0'], params['temp0'], params['humidity0'], params['icon0'], params['time1'], params['temp1'], params['humidity1'], params['icon1'], params['time2'], params['temp2'], params['humidity2'], params['icon2']))
     head :ok
   end
 
   private
 
-  def carousel(area, time0, temp0, humidity0, desc0, time1, temp1, humidity1, desc1, time2, temp2, humidity2, desc2)
+  def carousel(area, time0, temp0, humidity0, icon0, time1, temp1, humidity1, icon1, time2, temp2, humidity2, icon2, time3, temp3, humidity3, icon3, time4, temp4, humidity4, icon4)
     {
       "type": "flex",
-      "altText": "this is a flex message",
+      "altText": "お天気情報",
       "contents": {
         "type": "carousel",
         "contents": [
           {
             "type": "bubble",
-            "styles": {
-              "footer": {
-                "separator": true
-              }
-            },
-            "body": {
+            "header": {
               "type": "box",
               "layout": "vertical",
               "contents": [
@@ -98,14 +93,22 @@ class LinebotController < ApplicationController
                   "weight": "bold",
                   "color": "#1DB446",
                   "size": "xl"
-                },
-                {
-                  "type": "text",
-                  "text": "#{desc0}",
-                  "weight": "bold",
-                  "size": "xl",
-                  "margin": "md"
-                },
+                }
+              ]
+            },
+            "hero": {
+              "type": "image",
+              "url": "https://openweathermap.org/img/w/#{icon0}.png"
+            },
+            "styles": {
+              "footer": {
+                "separator": true
+              }
+            },
+            "body": {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
                 {
                   "type": "text",
                   "text": "#{time0}",
@@ -169,12 +172,7 @@ class LinebotController < ApplicationController
           },
           {
             "type": "bubble",
-            "styles": {
-              "footer": {
-                "separator": true
-              }
-            },
-            "body": {
+            "header": {
               "type": "box",
               "layout": "vertical",
               "contents": [
@@ -184,14 +182,22 @@ class LinebotController < ApplicationController
                   "weight": "bold",
                   "color": "#1DB446",
                   "size": "xl"
-                },
-                {
-                  "type": "text",
-                  "text": "#{desc1}",
-                  "weight": "bold",
-                  "size": "xl",
-                  "margin": "md"
-                },
+                }
+              ]
+            },
+            "hero": {
+              "type": "image",
+              "url": "https://openweathermap.org/img/w/#{icon1}.png"
+            },
+            "styles": {
+              "footer": {
+                "separator": true
+              }
+            },
+            "body": {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
                 {
                   "type": "text",
                   "text": "#{time1}",
@@ -255,12 +261,7 @@ class LinebotController < ApplicationController
           },
           {
             "type": "bubble",
-            "styles": {
-              "footer": {
-                "separator": true
-              }
-            },
-            "body": {
+            "header": {
               "type": "box",
               "layout": "vertical",
               "contents": [
@@ -270,14 +271,22 @@ class LinebotController < ApplicationController
                   "weight": "bold",
                   "color": "#1DB446",
                   "size": "xl"
-                },
-                {
-                  "type": "text",
-                  "text": "#{desc2}",
-                  "weight": "bold",
-                  "size": "xl",
-                  "margin": "md"
-                },
+                }
+              ]
+            },
+            "hero": {
+              "type": "image",
+              "url": "https://openweathermap.org/img/w/#{icon2}.png"
+            },
+            "styles": {
+              "footer": {
+                "separator": true
+              }
+            },
+            "body": {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
                 {
                   "type": "text",
                   "text": "#{time2}",
@@ -328,6 +337,184 @@ class LinebotController < ApplicationController
                         {
                           "type": "text",
                           "text": "#{humidity2}%",
+                          "size": "sm",
+                          "color": "#111111",
+                          "align": "end"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "type": "bubble",
+            "header": {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "#{area}の天気",
+                  "weight": "bold",
+                  "color": "#1DB446",
+                  "size": "xl"
+                }
+              ]
+            },
+            "hero": {
+              "type": "image",
+              "url": "https://openweathermap.org/img/w/#{icon3}.png"
+            },
+            "styles": {
+              "footer": {
+                "separator": true
+              }
+            },
+            "body": {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "#{time3}",
+                  "size": "xs",
+                  "color": "#aaaaaa",
+                  "wrap": true
+                },
+                {
+                  "type": "separator",
+                  "margin": "xxl"
+                },
+                {
+                  "type": "box",
+                  "layout": "vertical",
+                  "margin": "xxl",
+                  "spacing": "sm",
+                  "contents": [
+                    {
+                      "type": "box",
+                      "layout": "horizontal",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "気温",
+                          "size": "sm",
+                          "color": "#555555",
+                          "flex": 0
+                        },
+                        {
+                          "type": "text",
+                          "text": "#{temp3}℃",
+                          "size": "sm",
+                          "color": "#111111",
+                          "align": "end"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "box",
+                      "layout": "horizontal",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "湿度",
+                          "size": "sm",
+                          "color": "#555555"
+                        },
+                        {
+                          "type": "text",
+                          "text": "#{humidity3}%",
+                          "size": "sm",
+                          "color": "#111111",
+                          "align": "end"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "type": "bubble",
+            "header": {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "#{area}の天気",
+                  "weight": "bold",
+                  "color": "#1DB446",
+                  "size": "xl"
+                }
+              ]
+            },
+            "hero": {
+              "type": "image",
+              "url": "https://openweathermap.org/img/w/#{icon4}.png"
+            },
+            "styles": {
+              "footer": {
+                "separator": true
+              }
+            },
+            "body": {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "#{time4}",
+                  "size": "xs",
+                  "color": "#aaaaaa",
+                  "wrap": true
+                },
+                {
+                  "type": "separator",
+                  "margin": "xxl"
+                },
+                {
+                  "type": "box",
+                  "layout": "vertical",
+                  "margin": "xxl",
+                  "spacing": "sm",
+                  "contents": [
+                    {
+                      "type": "box",
+                      "layout": "horizontal",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "気温",
+                          "size": "sm",
+                          "color": "#555555",
+                          "flex": 0
+                        },
+                        {
+                          "type": "text",
+                          "text": "#{temp4}℃",
+                          "size": "sm",
+                          "color": "#111111",
+                          "align": "end"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "box",
+                      "layout": "horizontal",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "湿度",
+                          "size": "sm",
+                          "color": "#555555"
+                        },
+                        {
+                          "type": "text",
+                          "text": "#{humidity4}%",
                           "size": "sm",
                           "color": "#111111",
                           "align": "end"
