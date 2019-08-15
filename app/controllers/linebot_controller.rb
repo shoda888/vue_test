@@ -49,12 +49,12 @@ class LinebotController < ApplicationController
   def push
     if params[:area] == 'Tokyo'
       params[:area] = '東京'
-      params[:cnt].times.each do |n|
+      params[:cnt].to_i.times.each do |n|
         params["time#{n}"] = (Time.parse(params["time#{n}"]) + 9.hours).to_s(:db)
       end
     elsif params[:area] == 'Shanghai'
       params[:area] = '上海'
-      params[:cnt].times.each do |n|
+      params[:cnt].to_i.times.each do |n|
         params["time#{n}"] = (Time.parse(params["time#{n}"]) + 8.hours).to_s(:db)
       end
     end
@@ -64,7 +64,7 @@ class LinebotController < ApplicationController
 
   def push_family
     params[:area] = '東京'
-    params[:cnt].times.each do |n|
+    params[:cnt].to_i.times.each do |n|
       params["time#{n}"] = (Time.parse(params["time#{n}"]) + 9.hours).to_s(:db)
     end
     # client.reply_message('C0f109e7936999f32d0f7fbc696b8ca55', carousel(params['area'], params['time0'], params['temp0'], params['humidity0'], params['icon0'], params['time1'], params['temp1'], params['humidity1'], params['icon1'], params['time2'], params['temp2'], params['humidity2'], params['icon2']))

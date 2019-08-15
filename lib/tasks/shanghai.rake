@@ -67,7 +67,6 @@ task :shanghai_weather => :environment do
         # JSONオブジェクトをHashへパースする
         # JSON::ParserErrorが発生する可能性がある
         body = JSON.parse(response.body)
-
         params2 = URI.encode_www_form(
             { 
                 area: body['city']['name'],
