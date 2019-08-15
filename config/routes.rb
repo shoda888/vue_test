@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   post '/callback' => 'linebot#callback'
   get '/call' => 'linebot#call'
   get '/push' => 'linebot#push'
+  get '/push_family' => 'linebot#push_family'
   resources :books
 
   namespace :api do
