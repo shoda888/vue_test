@@ -72,9 +72,11 @@ class LinebotController < ApplicationController
         type: 'text',
         text: '暑いよー'
       }
-      client.push_message('C0f109e7936999f32d0f7fbc696b8ca55', message)
+      client.push_message('C5b56a06f5b1bd3c971785bf6e3f970cd', message)
+      # client.push_message('C0f109e7936999f32d0f7fbc696b8ca55', message)
     end
-    client.push_message('C0f109e7936999f32d0f7fbc696b8ca55', carousel(params['area'], params['time0'], params['temp0'], params['humidity0'], params['icon0'], params['time1'], params['temp1'], params['humidity1'], params['icon1'], params['time2'], params['temp2'], params['humidity2'], params['icon2'], params['time3'], params['temp3'], params['humidity3'], params['icon3'], params['time4'], params['temp4'], params['humidity4'], params['icon4']))
+    client.push_message('C5b56a06f5b1bd3c971785bf6e3f970cd', carousel(params['area'], params['time0'], params['temp0'], params['humidity0'], params['icon0'], params['time1'], params['temp1'], params['humidity1'], params['icon1'], params['time2'], params['temp2'], params['humidity2'], params['icon2'], params['time3'], params['temp3'], params['humidity3'], params['icon3'], params['time4'], params['temp4'], params['humidity4'], params['icon4']))
+    # client.push_message('C0f109e7936999f32d0f7fbc696b8ca55', carousel(params['area'], params['time0'], params['temp0'], params['humidity0'], params['icon0'], params['time1'], params['temp1'], params['humidity1'], params['icon1'], params['time2'], params['temp2'], params['humidity2'], params['icon2'], params['time3'], params['temp3'], params['humidity3'], params['icon3'], params['time4'], params['temp4'], params['humidity4'], params['icon4']))
     head :ok
   end
 
